@@ -61,11 +61,9 @@ abstract class IrasciblePet extends BasePet {
 				}
 			}
 			if($attacker instanceof Player && $this->canBeRidden && $attacker->getName() === $this->getPetOwnerName()) {
-				if($attacker->getInventory()->getItemInHand()->getId() === Item::SADDLE) {
-					$this->setRider($attacker);
-					$attacker->sendTip(TextFormat::GRAY . "Crouch or jump to dismount...");
-					$source->setCancelled();
-				}
+				$this->setRider($attacker);
+				$attacker->sendTip(TextFormat::GRAY . "Crouch or jump to dismount...");
+				$source->setCancelled();
 			}
 		}
 		parent::attack($damage, $source);
